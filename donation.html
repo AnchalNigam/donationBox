@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>Donation Box</h1>
+    <p>Contribution From: 01-01-2019</p>
+    <p id="todayDate"></p>
+    <p id="totalMonths"></p>
+    <p>Rs. 1000 Months -  16 - Rs.16000</p>
+    <p id="price"></p>
+    <p id="donation">Total Donation: </p>
+  </body>
+  <script>
+      function monthDiff(d1, d2) {
+        var months;
+        months = (d2.getFullYear() - d1.getFullYear()) * 12;
+        months -= d1.getMonth();
+        months += d2.getMonth();
+        return months <= 0 ? 0 : months;
+    }
+      const today = new Date();
+      const date = today.getDate() +'-'+(today.getMonth()+1)+'-'+today.getFullYear();
+      const totalMonths = monthDiff(new Date("01-01-2019"), new Date(today))
+      document.getElementById("todayDate").textContent = "Todays Date: " + date;
+      document.getElementById("totalMonths").textContent = "Total Months: " + totalMonths;
+      const restMonthPrice = (totalMonths-16)*2000;
+      document.getElementById("price").textContent = `Rs. 2000 Months - ${totalMonths-16} - Rs. ${restMonthPrice}`;
+      document.getElementById("donation").textContent = `Total Donation:  Rs. ${16000+restMonthPrice}`;
+
+  </script>
+</html>
